@@ -1,0 +1,26 @@
+name: Caliper test
+version: "2.0.0"
+
+caliper:
+  blockchain: fabric
+  sutOptions:
+    mutualTls: true
+
+channels:
+  - channelName: mychannel
+    contracts:
+      - id: fabcar
+
+organizations:
+  - mspid: Org1MSP
+    identities:
+      certificates:
+        - name: "appUser"
+          clientPrivateKey:
+            path: "../test-network/organizations/peerOrganizations/org1.example.com/users/User1@org1.example.com/msp/keystore/aaea382635cb2b6aa83070b54b2d52b13461c7408f9a9579103fb574d543165d_sk"
+          clientSignedCert:
+            path: "../test-network/organizations/peerOrganizations/org1.example.com/users/User1@org1.example.com/msp/signcerts/cert.pem"
+    connectionProfile:
+      path: "../test-network/organizations/peerOrganizations/org1.example.com/connection-org1.yaml"
+      discover: true
+
